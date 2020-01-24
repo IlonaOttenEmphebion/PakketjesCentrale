@@ -1,4 +1,4 @@
-package com.example.pakketjescentrale.data
+package com.example.pakketjescentrale.data.parceldatabase
 
 import com.example.pakketjescentrale.model.Parcel
 import com.example.pakketjescentrale.model.ParcelResult
@@ -6,6 +6,7 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface ParcelDataBaseApiService {
+
     @GET("/api​/v1​/parcels​/owned")
     fun getMyParcels(): Call<ParcelResult>
 
