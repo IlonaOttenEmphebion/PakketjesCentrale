@@ -9,6 +9,5 @@ data class Parcel (
     @SerializedName("id") var parcelID: Number,
     @SerializedName("from") var receivedFrom : String,
     @SerializedName("comment") var comments: String,
-    @SerializedName("identifier") var location: String,
-    @SerializedName("user_id") var locationUserID: Number
+    @SerializedName("location") var location: ParcelLocation
 ): Parcelable
