@@ -9,10 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.pakketjescentrale.R
+import com.example.pakketjescentrale.model.User
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,5 +29,10 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
         return root
+    }
+
+    companion object{
+        //TODO: voorlopig even hier, wordt gebruikt bij authenticatie
+        public lateinit var localUser: User
     }
 }
