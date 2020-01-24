@@ -1,10 +1,10 @@
 package com.example.pakketjescentrale.data.authentication
 
 import com.example.pakketjescentrale.model.AuthenticationResponse
+import com.example.pakketjescentrale.model.User
+import com.example.pakketjescentrale.model.UserResult
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface AuthenticationApiService {
 
@@ -17,5 +17,13 @@ interface AuthenticationApiService {
         @Field("password") password:String
     ): Call<AuthenticationResponse>
 
+    @POST("/api/v1/user/register")
+    fun registerNewUser(user:User)
+
+    @GET("/api/v1/user/search")
+    fun searchUsers(@Query(value = "query", encoded = true) queryTerms: String):Call<UserResult>
+
+    @GET("/api/v1/user/me")
+    fun getMyUserInformation():Call<User>
 
 }
