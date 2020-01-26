@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
 
     companion object{
         //voorlopig even hier, wordt gebruikt bij authenticatie
-        lateinit var localUser: User
-        lateinit var authenticationInfo: AuthenticationResponse
+        var localUser: User? = null
+        var authenticationInfo: AuthenticationResponse? = null
         const val ADD_USER_REQUEST_CODE = 100
     }
 }

@@ -24,8 +24,8 @@ class HomeViewModel : ViewModel() {
         //krijgen tbv database requests. N.B.: dit moet aangeroepen worden nadat de user heeft ingelogd.
         if (localUser != null) {
             authenticationRepository.getOAuthToken(
-                localUser.userName,
-                localUser.passWord
+                localUser!!.userName,
+                localUser!!.passWord
             ).enqueue(object :
                 Callback<AuthenticationResponse> {
                 override fun onResponse(
