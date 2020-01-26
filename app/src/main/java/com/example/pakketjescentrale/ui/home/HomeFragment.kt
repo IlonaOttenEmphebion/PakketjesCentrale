@@ -1,15 +1,21 @@
 package com.example.pakketjescentrale.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.pakketjescentrale.MainActivity
+import com.example.pakketjescentrale.MainActivity.Companion.authenticationInfo
 import com.example.pakketjescentrale.R
 import com.example.pakketjescentrale.model.User
+import com.example.pakketjescentrale.ui.newuser.NewUserActivity
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
@@ -20,19 +26,42 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
         return root
     }
 
-    companion object{
-        //TODO: voorlopig even hier, wordt gebruikt bij authenticatie
-        public lateinit var localUser: User
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initButtonListeners()
     }
+
+    private fun initButtonListeners(){
+        btnLogin.setOnClickListener{onLogInBtnClick()}
+        btnAanmelden.setOnClickListener { onAanmeldenBtnClick() }
+    }
+
+    private fun onLogInBtnClick(){
+        homeViewModel.authenticate()
+        if(!authenticationInfo.accessToken.isNullOrEmpty()){
+            Toast.makeText(getActivity(),"Login was succesvol", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private fun onAanmeldenBtnClick(){
+        val intent = Intent(this.context, NewUserActivity::class.java)
+        startActivityForResult(
+            intent,
+            MainActivity.ADD_USER_REQUEST_CODE
+        )
+    }
+
+
+
+
+
 }
