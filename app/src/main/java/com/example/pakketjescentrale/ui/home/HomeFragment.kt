@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun onLogInBtnClick(){
-        homeViewModel.authenticate()
+        homeViewModel.authenticate(etEmail.text.toString(), etPassword.text.toString())
         if(!authenticationInfo?.accessToken.isNullOrEmpty()){
             Toast.makeText(getActivity(),"Login was succesvol", Toast.LENGTH_SHORT).show();
         }

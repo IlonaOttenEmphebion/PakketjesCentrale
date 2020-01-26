@@ -18,7 +18,7 @@ class AuthenticationApi {
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(
                     OAuthInterceptor(
-                        "Basic",
+                        "app",
                         "rvHGfH6wS6a3mmPC"
                     )
                 )

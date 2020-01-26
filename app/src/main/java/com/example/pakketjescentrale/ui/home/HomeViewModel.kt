@@ -16,38 +16,39 @@ class HomeViewModel : ViewModel() {
 
     private val authenticationRepository =
         AuthenticationRepository()
-    lateinit var authenticationResponse:AuthenticationResponse
+    lateinit var authenticationResponse: AuthenticationResponse
     val error = MutableLiveData<String>()
 
-    fun authenticate() {
+    fun authenticate(userName: String, passWord: String) {
         //Voordat de DataBaseApi connectie opgezet wordt, is authenticatie nodig om het benodigde token te
         //krijgen tbv database requests. N.B.: dit moet aangeroepen worden nadat de user heeft ingelogd.
-        if (localUser != null) {
-            authenticationRepository.getOAuthToken(
-                localUser!!.userName,
-                localUser!!.passWord
-            ).enqueue(object :
-                Callback<AuthenticationResponse> {
-                override fun onResponse(
-                    call: Call<AuthenticationResponse>,
-                    response: Response<AuthenticationResponse>
-                ) {
-                    if (response.isSuccessful) {
 
-                        authenticationResponse = response.body()!!
-                        ParcelDataBaseApi.token =
-                            authenticationResponse.accessToken
-                        authenticationInfo = authenticationResponse
+        authenticationRepository.getOAuthToken(
+            userName,
+            passWord
+        ).enqueue(object :
+            Callback<AuthenticationResponse> {
+            override fun onResponse(
+                call: Call<AuthenticationResponse>,
+                response: Response<AuthenticationResponse>
+            ) {
+                if (response.isSuccessful) {
+                    println("YAY")
+                    authenticationResponse = response.body()!!
+                    ParcelDataBaseApi.token =
+                        authenticationResponse.accessToken
+                    authenticationInfo = authenticationResponse
 
-                    } else {
-                        error.value = "An error occurred: ${response.errorBody().toString()}"
-                    }
+                } else {
+                    println(response.errorBody()?.string())
+                    error.value = "An error occurred: ${response.errorBody().toString()}"
                 }
+            }
 
-                override fun onFailure(call: Call<AuthenticationResponse>, t: Throwable) {
-                    error.value = t.message
-                }
-            })
-        }
+            override fun onFailure(call: Call<AuthenticationResponse>, t: Throwable) {
+                error.value = t.message
+            }
+        })
+
     }
 }
