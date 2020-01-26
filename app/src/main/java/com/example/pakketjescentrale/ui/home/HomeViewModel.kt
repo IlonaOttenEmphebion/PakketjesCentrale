@@ -3,6 +3,7 @@ package com.example.pakketjescentrale.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.pakketjescentrale.MainActivity.Companion.authenticationInfo
 import com.example.pakketjescentrale.MainActivity.Companion.localUser
 import com.example.pakketjescentrale.data.authentication.AuthenticationRepository
 import com.example.pakketjescentrale.data.parceldatabase.ParcelDataBaseApi
@@ -36,6 +37,7 @@ class HomeViewModel : ViewModel() {
                         authenticationResponse = response.body()!!
                         ParcelDataBaseApi.token =
                             authenticationResponse.accessToken
+                        authenticationInfo = authenticationResponse
 
                     } else {
                         error.value = "An error occurred: ${response.errorBody().toString()}"

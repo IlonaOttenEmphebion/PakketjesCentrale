@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.pakketjescentrale.model.AuthenticationResponse
 import com.example.pakketjescentrale.model.User
 import com.example.pakketjescentrale.ui.home.HomeFragment
 import com.example.pakketjescentrale.ui.newuser.NewUserActivity
@@ -37,8 +38,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object{
-        //TODO: voorlopig even hier, wordt gebruikt bij authenticatie
-        public lateinit var localUser: User
+        //voorlopig even hier, wordt gebruikt bij authenticatie
+        lateinit var localUser: User
+        lateinit var authenticationInfo: AuthenticationResponse
         const val ADD_USER_REQUEST_CODE = 100
     }
 }

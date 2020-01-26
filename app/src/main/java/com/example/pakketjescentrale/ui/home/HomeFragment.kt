@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.pakketjescentrale.MainActivity
+import com.example.pakketjescentrale.MainActivity.Companion.authenticationInfo
 import com.example.pakketjescentrale.R
 import com.example.pakketjescentrale.model.User
 import com.example.pakketjescentrale.ui.newuser.NewUserActivity
@@ -39,12 +41,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun initButtonListeners(){
-        //btnLogin.setOnClickListener{onLogInBtnClick()}
+        btnLogin.setOnClickListener{onLogInBtnClick()}
         btnAanmelden.setOnClickListener { onAanmeldenBtnClick() }
     }
 
     private fun onLogInBtnClick(){
-
+        homeViewModel.authenticate()
+        if(!authenticationInfo.accessToken.isNullOrEmpty()){
+            Toast.makeText(getActivity(),"Login was succesvol", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private fun onAanmeldenBtnClick(){
