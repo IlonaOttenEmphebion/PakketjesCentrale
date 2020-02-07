@@ -14,11 +14,10 @@ class AuthenticationRepository {
         grandType,
         scope,userName, password)
 
-    fun registerNewUser(user: User) = authenticationApi.registerNewUser(user)
-
-    fun searchUsers(query:String):Call<UserResult> = authenticationApi.searchUsers(query)
-
-    fun getMyUserInformation():Call<User> = authenticationApi.getMyUserInformation()
+// Deze functionaliteit moet niet hier, maar naar een andere Api, die nu nog niet bestaat.
+//    fun searchUsers(query:String):Call<UserResult> = authenticationApi.searchUsers(query)
+//
+//    fun getMyUserInformation():Call<User> = authenticationApi.getMyUserInformation()
 
     companion object{
         private const val grandType:String = "password"

@@ -11,14 +11,11 @@ interface AuthenticationApiService {
     @FormUrlEncoded
     @POST("/oauth/access_token")
     fun getOAuthToken(
-        @Field ("grand_type") grandType:String,
+        @Field ("grant_type") grandType:String,
         @Field ("scope") scope:String,
         @Field("username") username:String,
         @Field("password") password:String
     ): Call<AuthenticationResponse>
-
-    @POST("/api/v1/user/register")
-    fun registerNewUser(user:User)
 
     @GET("/api/v1/user/search")
     fun searchUsers(@Query(value = "query", encoded = true) queryTerms: String):Call<UserResult>

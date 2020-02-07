@@ -7,6 +7,7 @@ import com.example.pakketjescentrale.MainActivity.Companion.authenticationInfo
 import com.example.pakketjescentrale.MainActivity.Companion.localUser
 import com.example.pakketjescentrale.data.authentication.AuthenticationRepository
 import com.example.pakketjescentrale.data.parceldatabase.ParcelDataBaseApi
+import com.example.pakketjescentrale.data.registration.RegistrationRepository
 import com.example.pakketjescentrale.model.AuthenticationResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -51,4 +52,5 @@ class HomeViewModel : ViewModel() {
         })
 
     }
+
 }

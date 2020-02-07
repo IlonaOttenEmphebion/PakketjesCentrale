@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.pakketjescentrale.R
+import com.example.pakketjescentrale.model.NewUserRequest
 import com.example.pakketjescentrale.model.User
 
 import kotlinx.android.synthetic.main.activity_new_user.*
@@ -46,14 +47,13 @@ class NewUserActivity : AppCompatActivity() {
     }
 
     private fun onSaveUserClick(){
-        val user = User(
+        val newUser = NewUserRequest(
             etEmail.text.toString(),
             etPassword.text.toString(),
             etHuisnummer.text.toString().toInt(),
-            etToevoeging.text.toString(),
-            0
+            etToevoeging.text.toString()
         )
-        newUserViewModel.saveNewUser(user)
+        newUserViewModel.saveNewUser(newUser)
     }
 
 }
