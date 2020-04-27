@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
+        val spinHuisnummer = resources.getStringArray(R.array.spinHuisnummer)
+        val spinToevoeging = resources.getStringArray(R.array.spinToevoeging)
+
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

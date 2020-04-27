@@ -34,10 +34,10 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/btnSaveUser"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPassword"
-        app:layout_constraintVertical_bias="0.035" />
+        app:layout_constraintVertical_bias="0.097" />
 
     <EditText
         android:id="@+id/etEmail"
@@ -46,30 +46,12 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="138dp"
-        android:layout_marginBottom="42dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/etHuisnummer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail"
-        app:layout_constraintVertical_bias="0.054" />
-
-    <EditText
-        android:id="@+id/etHuisnummer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="138dp"
-        android:layout_marginBottom="30dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/tvToevoeging"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHuisnummer" />
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
     <TextView
         android:id="@+id/tvEmail"
@@ -91,9 +73,7 @@
         android:layout_marginStart="61dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="269dp"
-        android:layout_marginBottom="10dp"
         android:text="@string/text_huisnummer"
-        app:layout_constraintBottom_toTopOf="@+id/etHuisnummer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmail" />
@@ -103,38 +83,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="13dp"
         android:text="@string/text_toevoeging"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etHuisnummer" />
-
-    <EditText
-        android:id="@+id/etToevoeging"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="137dp"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvToevoeging" />
+        app:layout_constraintTop_toBottomOf="@+id/spinHuisnummer" />
 
     <TextView
         android:id="@+id/tvPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="268dp"
+        android:layout_marginBottom="14dp"
         android:text="@string/text_password"
+        app:layout_constraintBottom_toTopOf="@+id/etPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etToevoeging" />
+        app:layout_constraintTop_toBottomOf="@+id/spinToevoeging" />
+
+    <Spinner
+        android:id="@+id/spinHuisnummer"
+        android:layout_width="212dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="139dp"
+        android:layout_marginBottom="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvToevoeging"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHuisnummer" />
+
+    <Spinner
+        android:id="@+id/spinToevoeging"
+        android:layout_width="212dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="138dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvToevoeging" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,13 +2,11 @@ package com.example.pakketjescentrale.ui.newuser
 
 import android.os.Bundle
 import android.widget.Toast
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.pakketjescentrale.R
 import com.example.pakketjescentrale.model.NewUserRequest
-import com.example.pakketjescentrale.model.User
 
 import kotlinx.android.synthetic.main.activity_new_user.*
 import kotlinx.android.synthetic.main.content_new_user.*
@@ -50,8 +48,8 @@ class NewUserActivity : AppCompatActivity() {
         val newUser = NewUserRequest(
             etEmail.text.toString(),
             etPassword.text.toString(),
-            etHuisnummer.text.toString().toInt(),
-            etToevoeging.text.toString()
+            arrayOf (spinHuisnummer).toString().toInt(),
+            arrayOf (spinToevoeging).toString()
         )
         newUserViewModel.saveNewUser(newUser)
     }
