@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
         if(!authenticationInfo?.accessToken.isNullOrEmpty()){
             Toast.makeText(getActivity(),"Login was succesvol", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getActivity(),"Login failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"Login failed: " + homeViewModel.error.value, Toast.LENGTH_SHORT).show();
         }
     }
 
