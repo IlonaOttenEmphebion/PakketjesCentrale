@@ -38,10 +38,9 @@ class DashboardFragment : Fragment() {
         packages.add(ParcelText("Answer Questions"))
     }
 
-//    private fun initViews() {
-//        // Initialize the recycler view with a linear layout manager, adapter
-//        rv_myParcels.layoutManager = LinearLayoutManager(this@DashboardFragment, RecyclerView.VERTICAL, false)
-//        rv_myParcels.adapter = dashboardAdapter
-//        rv_myParcels.addItemDecoration(DividerItemDecoration(this@DashboardFragment, DividerItemDecoration.VERTICAL))
-//    }
+    private fun initViews() {
+        // Initialize the recycler view with a linear layout manager, adapter
+        rv_myParcels.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        rv_myParcels.adapter = dashboardAdapter
+    }
 }
