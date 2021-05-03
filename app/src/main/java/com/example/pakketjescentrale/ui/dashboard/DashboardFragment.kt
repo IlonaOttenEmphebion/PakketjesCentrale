@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pakketjescentrale.R
@@ -25,22 +24,21 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        packages.add(ParcelText("Do Homework"))
+        packages.add(ParcelText("Answer Questions"))
+
         dashboardViewModel =
             ViewModelProviders.of(this).get(DashboardViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
         dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
         })
+
+        // Initialize the recycler view with a linear layout manager, adapter
+        val recyclerView: RecyclerView = root.findViewById(R.id.rv_myParcels)
+        recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        recyclerView.adapter = dashboardAdapter
+
         return root
 
-        packages.add(ParcelText("Do Homework"))
-        packages.add(ParcelText("Answer Questions"))
-    }
-
-    private fun initViews() {
-        // Initialize the recycler view with a linear layout manager, adapter
-        rv_myParcels.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        rv_myParcels.adapter = dashboardAdapter
     }
 }
