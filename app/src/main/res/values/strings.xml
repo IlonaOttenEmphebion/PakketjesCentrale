@@ -10,7 +10,7 @@
     <string name="text_password">Password</string>
     <string name="title_activity_new_user">Aanmelden Nieuwe Gebruiker</string>
     <string name="text_huisnummer">Huisnummer</string>
-    <string name="text_toevoeging">Huisnummer</string>
+    <string name="text_toevoeging">Toevoeging</string>
     <string-array name="spinHuisnummer">
         <item>1</item>
         <item>2</item>

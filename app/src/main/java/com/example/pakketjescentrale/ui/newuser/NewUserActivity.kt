@@ -7,7 +7,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.pakketjescentrale.R
 import com.example.pakketjescentrale.model.NewUserRequest
-
 import kotlinx.android.synthetic.main.activity_new_user.*
 import kotlinx.android.synthetic.main.content_new_user.*
 
@@ -48,8 +47,8 @@ class NewUserActivity : AppCompatActivity() {
         val newUser = NewUserRequest(
             etEmail.text.toString(),
             etPassword.text.toString(),
-            arrayOf (spinHuisnummer).toString().toInt(),
-            arrayOf (spinToevoeging).toString()
+            etHuisnummer.text.toString().toInt(),
+            etToevoeging.text.toString()
         )
         newUserViewModel.saveNewUser(newUser)
     }
