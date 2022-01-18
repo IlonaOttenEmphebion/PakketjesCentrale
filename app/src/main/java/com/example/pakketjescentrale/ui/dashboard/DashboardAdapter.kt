@@ -8,11 +8,13 @@ import com.example.pakketjescentrale.R
 import com.example.pakketjescentrale.model.Parcel
 import kotlinx.android.synthetic.main.parcel_item.view.*
 
-class DashboardAdapter (private val packages: List<ParcelText>) : RecyclerView.Adapter<DashboardAdapter.ViewHolder>(){
+class DashboardAdapter (private val packages: List<Parcel>) : RecyclerView.Adapter<DashboardAdapter.ViewHolder>(){
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(parcel: ParcelText) {
-            itemView.tvParcel.text = parcel.parcelText
+        fun bind(parcel: Parcel) {
+            itemView.sender.text = parcel.receivedFrom
+            itemView.house_nr.text = parcel.location.location
+            itemView.comment.text = parcel.comments
         }
     }
 

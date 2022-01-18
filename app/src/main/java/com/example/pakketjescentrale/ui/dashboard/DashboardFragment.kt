@@ -10,13 +10,24 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pakketjescentrale.MainActivity
 import com.example.pakketjescentrale.R
+import com.example.pakketjescentrale.data.parceldatabase.ParcelDataBaseApi
+import com.example.pakketjescentrale.data.parceldatabase.ParcelRepository
+import com.example.pakketjescentrale.model.AuthenticationResponse
+import com.example.pakketjescentrale.model.Parcel
+import com.example.pakketjescentrale.model.ParcelLocation
+import com.example.pakketjescentrale.model.ParcelResult
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.await
 
 class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
-    private val packages = arrayListOf<ParcelText>()
+    private val packages = arrayListOf<Parcel>()
     private val dashboardAdapter = DashboardAdapter(packages)
 
     override fun onCreateView(
@@ -30,15 +41,29 @@ class DashboardFragment : Fragment() {
         dashboardViewModel =
             ViewModelProviders.of(this).get(DashboardViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-        })
-
-        // Initialize the recycler view with a linear layout manager, adapter
+        val textView: TextView = root.findViewById(R.id.text_dashboard)
         val recyclerView: RecyclerView = root.findViewById(R.id.rv_myParcels)
+        val parcelRepository: ParcelRepository = ParcelRepository()
+
         recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         recyclerView.adapter = dashboardAdapter
 
-        return root
+        parcelRepository.getParcelsReceived().enqueue(object :
+            Callback<Array<Parcel>> {
+            override fun onFailure(call: Call<Array<Parcel>>, t: Throwable) {
+                print("ugygv")
+            }
 
+            override fun onResponse(call: Call<Array<Parcel>>, response: Response<Array<Parcel>>) {
+                if (response.isSuccessful) {
+                    response.body()?.let { packages.addAll(it) }
+                    dashboardAdapter.notifyDataSetChanged()
+                }
+            }
+        })
+
+        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        })
+        return root
     }
 }

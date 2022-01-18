@@ -8,13 +8,13 @@ import retrofit2.http.*
 
 interface ParcelDataBaseApiService {
 
-    @GET("/api​/v1​/parcels​/owned")
-    fun getMyParcels(): Call<ParcelResult>
+    @GET("/api/v1/parcels/owned")
+    fun getMyParcels(): Call<Array<Parcel>>
 
-    @GET("/api​/v1​/parcels​/received")
-    fun getParcelsReceived(): Call<ParcelResult>
+    @GET("/api/v1/parcels/received")
+    fun getParcelsReceived(): Call<Array<Parcel>>
 
-    @POST("/api​/v1​/parcels​/received")
+    @POST("/api/v1/parcels/received")
     fun registerReceivedParcel(parcel: Parcel)
 
     @PUT("/api/v1/parcels/{parcel_id}/pickup")
