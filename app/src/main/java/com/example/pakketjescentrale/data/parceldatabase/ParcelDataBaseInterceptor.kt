@@ -7,7 +7,7 @@ class ParcelDataBaseInterceptor(private val autheticationToken:String): Intercep
     override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
         var request = chain.request()
         request = request.newBuilder()
-            .header("access_token", "$autheticationToken")
+            .header("Authorization", "Bearer $autheticationToken")
             .build()
 
         return chain.proceed(request)

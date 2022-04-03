@@ -1,4 +1,4 @@
-package com.example.pakketjescentrale.ui.dashboard
+package com.example.pakketjescentrale.ui.notifications
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import com.example.pakketjescentrale.R
 import com.example.pakketjescentrale.model.Parcel
 import kotlinx.android.synthetic.main.parcel_item.view.*
 
-class DashboardAdapter (private val packages: List<Parcel>) : RecyclerView.Adapter<DashboardAdapter.ViewHolder>(){
+class NotivicationsAdapter (private val packages: List<Parcel>) : RecyclerView.Adapter<NotivicationsAdapter.ViewHolder>(){
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(parcel: Parcel) {

@@ -10,9 +10,9 @@ import retrofit2.Call
 class ParcelRepository {
     private val parcelApi: ParcelDataBaseApiService = ParcelDataBaseApi.createApi()
 
-    fun getMyParcels(): Call<ParcelResult> = parcelApi.getMyParcels()
+    fun getMyParcels(): Call<Array<Parcel>> = parcelApi.getMyParcels()
 
-    fun getParcelsReceived():Call<ParcelResult> = parcelApi.getParcelsReceived()
+    fun getParcelsReceived():Call<Array<Parcel>> = parcelApi.getParcelsReceived()
 
     fun registerReceivedParcel(parcel: Parcel) = parcelApi.registerReceivedParcel(parcel)
 

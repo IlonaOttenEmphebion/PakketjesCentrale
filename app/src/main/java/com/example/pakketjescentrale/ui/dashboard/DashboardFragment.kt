@@ -11,12 +11,17 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pakketjescentrale.R
-import kotlinx.android.synthetic.main.fragment_dashboard.*
+import com.example.pakketjescentrale.data.parceldatabase.ParcelRepository
+import com.example.pakketjescentrale.model.Parcel
+import com.example.pakketjescentrale.model.ParcelLocation
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
-    private val packages = arrayListOf<ParcelText>()
+    private val packages = arrayListOf<Parcel>()
     private val dashboardAdapter = DashboardAdapter(packages)
 
     override fun onCreateView(
@@ -24,21 +29,30 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        packages.add(ParcelText("Do Homework"))
-        packages.add(ParcelText("Answer Questions"))
-
         dashboardViewModel =
             ViewModelProviders.of(this).get(DashboardViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-        })
-
-        // Initialize the recycler view with a linear layout manager, adapter
         val recyclerView: RecyclerView = root.findViewById(R.id.rv_myParcels)
+        val parcelRepository: ParcelRepository = ParcelRepository()
+
         recyclerView.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         recyclerView.adapter = dashboardAdapter
 
-        return root
+        parcelRepository.getParcelsReceived().enqueue(object :
+            Callback<Array<Parcel>> {
+            override fun onFailure(call: Call<Array<Parcel>>, t: Throwable) {
+                print("getParcelsReceived failed")
+            }
 
+            override fun onResponse(call: Call<Array<Parcel>>, response: Response<Array<Parcel>>) {
+                if (response.isSuccessful) {
+                    packages.addAll(response.body()!!);
+
+                    dashboardAdapter.notifyDataSetChanged()
+                }
+            }
+        })
+
+        return root
     }
 }
