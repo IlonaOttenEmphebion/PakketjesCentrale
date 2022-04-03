@@ -41,7 +41,7 @@ class DashboardFragment : Fragment() {
         parcelRepository.getParcelsReceived().enqueue(object :
             Callback<Array<Parcel>> {
             override fun onFailure(call: Call<Array<Parcel>>, t: Throwable) {
-                print("ugygv")
+                print("getParcelsReceived failed")
             }
 
             override fun onResponse(call: Call<Array<Parcel>>, response: Response<Array<Parcel>>) {
