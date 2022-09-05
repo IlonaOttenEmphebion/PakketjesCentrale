@@ -4,7 +4,7 @@
     <string name="title_dashboard">Mijn Pakketjes</string>
     <string name="title_notifications">Voor Anderen</string>
     <string name="login_button_text">LOG IN</string>
-    <string name="signup_button_text">AANMELDEN</string>
+    <string name="signup_button_text">REGISTREREN</string>
     <string name="text_of">Of</string>
     <string name="text_email">Email</string>
     <string name="text_password">Password</string>
