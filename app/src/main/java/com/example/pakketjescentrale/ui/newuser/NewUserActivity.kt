@@ -1,6 +1,8 @@
 package com.example.pakketjescentrale.ui.newuser
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -21,6 +23,32 @@ class NewUserActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Aanmelden Nieuwe Gebruiker"
 
+        val spinnerHuisnummer: Spinner = findViewById(R.id.spinnerHuisnummer)
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.spinHuisnummer,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinnerHuisnummer.adapter = adapter
+        }
+
+        val spinnerToevoeging: Spinner = findViewById(R.id.spinnerToevoeging)
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.spinToevoeging,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinnerToevoeging.adapter = adapter
+        }
+
         initViews()
         initViewModel()
     }
@@ -33,7 +61,7 @@ class NewUserActivity : AppCompatActivity() {
         })
 
         newUserViewModel.success.observe(this, Observer { success ->
-            if (success) finish()
+            if (success) Toast.makeText(this, "Registratie was succelvol", Toast.LENGTH_SHORT).show()
         })
     }
 
@@ -47,8 +75,8 @@ class NewUserActivity : AppCompatActivity() {
         val newUser = NewUserRequest(
             etEmail.text.toString(),
             etPassword.text.toString(),
-            etHuisnummer.text.toString().toInt(),
-            etToevoeging.text.toString()
+            spinnerHuisnummer.toString().toInt(),
+            spinnerToevoeging.toString()
         )
         newUserViewModel.saveNewUser(newUser)
     }

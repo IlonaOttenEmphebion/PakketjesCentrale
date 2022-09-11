@@ -9,12 +9,12 @@
     tools:showIn="@layout/activity_new_user">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etDatum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+        android:hint="Datum"
+        android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/etPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.298"
@@ -29,52 +29,49 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerHuisnummer"
+        app:layout_constraintBottom_toTopOf="@+id/etHuisnummer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.298"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinnerHuisnummer"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etHuisnummer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:ems="10"
         android:hint="Huisnummer"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerToevoeging"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/etToevoeging"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.298"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="308dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Spinner
-            android:id="@+id/spinnerToevoeging"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="336dp"
-            android:ems="10"
-            android:hint="Toevoeging"
-            android:inputType="textCapCharacters"
-            app:layout_constraintBottom_toTopOf="@+id/btnSaveUser"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.298"
-            app:layout_constraintStart_toStartOf="parent" />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etToevoeging"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="336dp"
+        android:ems="10"
+        android:hint="Toevoeging"
+        android:inputType="textCapCharacters"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.298"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/btnSaveUser"
-            android:layout_width="405dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="3dp"
-            android:layout_marginEnd="3dp"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="@string/signup_button_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/btnSaveUser"
+        android:layout_width="405dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/signup_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
