@@ -9,6 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.pakketjescentrale.R
 import com.example.pakketjescentrale.model.NewUserRequest
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_new_user.*
 import kotlinx.android.synthetic.main.content_new_user.*
 
@@ -53,6 +55,34 @@ class NewUserActivity : AppCompatActivity() {
         initViewModel()
     }
 
+    private fun validateEmail(): Boolean {
+        val textInputEmail: TextInputLayout = findViewById(R.id.text_input_email)
+        val emailInput: String = textInputEmail.getEditText()?.getText().toString().trim()
+        return if (emailInput.isEmpty()) {
+            textInputEmail.setError("Field can't be empty")
+            false
+        } else {
+            textInputEmail.setError(null)
+            true
+        }
+    }
+
+    private fun validatePassword(): Boolean {
+        val textInputEmail: TextInputLayout = findViewById(R.id.text_input_password)
+        val emailInput: String = textInputEmail.getEditText()?.getText().toString().trim()
+        return if (emailInput.isEmpty()) {
+            textInputEmail.setError("Field can't be empty")
+            false
+        } else {
+            textInputEmail.setError(null)
+            true
+        }
+    }
+
+//    public fun confirmInput() {
+//       return if (!validateEmail() and  !validatePassword()) {
+//        }}
+
     private fun initViewModel(){
         newUserViewModel = ViewModelProviders.of(this).get(NewUserViewModel::class.java)
 
@@ -61,7 +91,7 @@ class NewUserActivity : AppCompatActivity() {
         })
 
         newUserViewModel.success.observe(this, Observer { success ->
-            if (success) Toast.makeText(this, "Registratie was succelvol", Toast.LENGTH_SHORT).show()
+            if (success) Toast.makeText(this, "Registratie was succesvol", Toast.LENGTH_SHORT).show()
         })
     }
 
