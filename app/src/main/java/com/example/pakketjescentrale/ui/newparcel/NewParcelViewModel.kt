@@ -1,10 +1,12 @@
-package com.example.pakketjescentrale.ui.newuser
+package com.example.pakketjescentrale.ui.newparcel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.pakketjescentrale.MainActivity.Companion.localUser
+import com.example.pakketjescentrale.data.parceldatabase.ParcelRepository
 import com.example.pakketjescentrale.data.registration.RegistrationRepository
+import com.example.pakketjescentrale.model.NewParcelRequest
 import com.example.pakketjescentrale.model.NewUserRequest
 import com.example.pakketjescentrale.model.User
 import retrofit2.Call
@@ -12,24 +14,21 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class NewParcelViewModel(application: Application) : AndroidViewModel(application) {
-    private val registrationRepository = RegistrationRepository()
-    lateinit var returnedUserInfo:User
+    private val parcelRepository = ParcelRepository()
     val error = MutableLiveData<String>()
     val success = MutableLiveData<Boolean>()
 
-    fun saveNewUser(user: NewUserRequest){
-        if(userIsValid(user)){
-            registrationRepository.registerNewUser(user).enqueue(object :
-                Callback<User> {
+    fun saveNewParcel(parcel: NewParcelRequest){
+        if(parcelIsValid(parcel)){
+            parcelRepository.registerReceivedParcel(parcel).enqueue(object :
+                Callback<Any> {
                 override fun onResponse(
-                    call: Call<User>,
-                    response: Response<User>
+                    call: Call<Any>,
+                    response: Response<Any>
                 ) {
                     if (response.isSuccessful) {
-                        println("User registered")
-                        returnedUserInfo = response.body()!!
+                        println("Parcel registered")
                         success.value = true
-                        localUser = returnedUserInfo
 
                     } else {
                         println(response.errorBody()?.string())
@@ -38,7 +37,7 @@ class NewParcelViewModel(application: Application) : AndroidViewModel(applicatio
                     }
                 }
 
-                override fun onFailure(call: Call<User>, t: Throwable) {
+                override fun onFailure(call: Call<Any>, t: Throwable) {
                     error.value = t.message
                     success.value = false
                 }
@@ -46,26 +45,22 @@ class NewParcelViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
-    private fun userIsValid(newUser: NewUserRequest): Boolean {
+    private fun parcelIsValid(newParcel: NewParcelRequest): Boolean {
         return when {
-            newUser == null -> {
-                error.value = "User must not be null"
+            newParcel == null -> {
+                error.value = "Parcel must not be null"
                 false
             }
-            newUser.userName.isBlank() -> {
-                error.value = "Please fill in a valid email adress"
+            newParcel.comment.isBlank() -> {
+                error.value = "Please fill in a valid pickup date"
                 false
             }
-            !(newUser.userName.contains("@")) ->{
-                error.value = "Please fill in a valid email adress"
+            newParcel.date.isBlank() ->{
+                error.value = "Please fill in a valid date"
                 false
             }
-            newUser.houseNumber.toString().isBlank() -> {
-                error.value = "Please fill in a house number"
-                false
-            }
-            newUser.passWord.isBlank() -> {
-                error.value = "Please fill in a valid password"
+            newParcel.sender.isBlank() -> {
+                error.value = "Please fill in a sender, like bol.com"
                 false
             }
 

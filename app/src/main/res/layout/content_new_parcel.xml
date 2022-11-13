@@ -25,7 +25,7 @@
             android:text="Huisnummer" />
 
         <Spinner
-            android:id="@+id/spinnerHuisnummer"
+            android:id="@+id/spinnerHuisnummerParcel"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="32dp"
@@ -53,7 +53,7 @@
             android:text="Toevoeging" />
 
         <Spinner
-            android:id="@+id/spinnerToevoeging"
+            android:id="@+id/spinnerToevoegingParcel"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="100dp"

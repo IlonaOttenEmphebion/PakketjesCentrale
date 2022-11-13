@@ -1,10 +1,8 @@
 package com.example.pakketjescentrale.data.parceldatabase
 
-import com.example.pakketjescentrale.data.parceldatabase.ParcelDataBaseApi
-import com.example.pakketjescentrale.data.parceldatabase.ParcelDataBaseApiService
 import com.example.pakketjescentrale.model.MessageResult
+import com.example.pakketjescentrale.model.NewParcelRequest
 import com.example.pakketjescentrale.model.Parcel
-import com.example.pakketjescentrale.model.ParcelResult
 import retrofit2.Call
 
 class ParcelRepository {
@@ -14,7 +12,7 @@ class ParcelRepository {
 
     fun getParcelsReceived():Call<Array<Parcel>> = parcelApi.getParcelsReceived()
 
-    fun registerReceivedParcel(parcel: Parcel) = parcelApi.registerReceivedParcel(parcel)
+    fun registerReceivedParcel(parcel: NewParcelRequest) = parcelApi.registerReceivedParcel(parcel)
 
     fun updateParcel(parcel: Parcel) = parcelApi.updateParcel(parcel.parcelID, parcel)
 

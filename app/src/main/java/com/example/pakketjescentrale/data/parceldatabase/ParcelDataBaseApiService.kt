@@ -1,6 +1,7 @@
 package com.example.pakketjescentrale.data.parceldatabase
 
 import com.example.pakketjescentrale.model.MessageResult
+import com.example.pakketjescentrale.model.NewParcelRequest
 import com.example.pakketjescentrale.model.Parcel
 import com.example.pakketjescentrale.model.ParcelResult
 import retrofit2.Call
@@ -15,7 +16,7 @@ interface ParcelDataBaseApiService {
     fun getParcelsReceived(): Call<Array<Parcel>>
 
     @POST("/api/v1/parcels/received")
-    fun registerReceivedParcel(parcel: Parcel)
+    fun registerReceivedParcel(parcel: NewParcelRequest): Call<Any>
 
     @PUT("/api/v1/parcels/{parcel_id}/pickup")
     fun updateParcel(@Path("parcel_id") parcel_id: Number, parcel: Parcel)
