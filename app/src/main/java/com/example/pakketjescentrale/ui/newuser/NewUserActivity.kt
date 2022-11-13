@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.pakketjescentrale.R
 import com.example.pakketjescentrale.model.NewUserRequest
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_new_user.*
 import kotlinx.android.synthetic.main.content_new_user.*
@@ -39,7 +38,6 @@ class NewUserActivity : AppCompatActivity() {
         }
 
         val spinnerToevoeging: Spinner = findViewById(R.id.spinnerToevoeging)
-        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(
             this,
             R.array.spinToevoeging,
@@ -79,9 +77,12 @@ class NewUserActivity : AppCompatActivity() {
         }
     }
 
-//    public fun confirmInput() {
-//       return if (!validateEmail() and  !validatePassword()) {
-//        }}
+   public fun confirmInput() {
+      return if (!validateEmail() and !validatePassword()) {
+        } else {
+
+      }
+   }
 
     private fun initViewModel(){
         newUserViewModel = ViewModelProviders.of(this).get(NewUserViewModel::class.java)
@@ -105,8 +106,8 @@ class NewUserActivity : AppCompatActivity() {
         val newUser = NewUserRequest(
             etEmail.text.toString(),
             etPassword.text.toString(),
-            spinnerHuisnummer.toString().toInt(),
-            spinnerToevoeging.toString()
+            spinnerHuisnummer.selectedItem.toString().toInt(),
+            spinnerToevoeging.selectedItem.toString()
         )
         newUserViewModel.saveNewUser(newUser)
     }

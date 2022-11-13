@@ -36,5 +36,6 @@ class MainActivity : AppCompatActivity() {
         var localUser: User? = null
         var authenticationInfo: AuthenticationResponse? = null
         const val ADD_USER_REQUEST_CODE = 100
+        const val ADD_PARCEL_REQUEST_CODE = 101
     }
 }

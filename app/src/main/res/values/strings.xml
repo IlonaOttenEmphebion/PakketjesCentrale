@@ -11,6 +11,8 @@
     <string name="title_activity_new_user">Aanmelden Nieuwe Gebruiker</string>
     <string name="text_huisnummer">Huisnummer</string>
     <string name="text_toevoeging">Toevoeging</string>
+    <string name="add_parcel">Add parcel</string>
+    <string name="title_activity_new_parcel">Activity new parcel</string>
     <string-array name="spinHuisnummer">
         <item>67</item>
         <item>68</item>

@@ -1,68 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.newuser.NewUserActivity"
-    tools:showIn="@layout/activity_new_user">
+    tools:context=".ui.newparcel.NewParcelActivity"
+    tools:showIn="@layout/activity_new_parcel">
 
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_huisnummer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Huisnummer" />
+
+        <Spinner
+            android:id="@+id/spinnerHuisnummer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="32dp"
+            android:ems="10"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerToevoeging"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.298"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="308dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_toevoeging"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Toevoeging" />
+
+        <Spinner
+            android:id="@+id/spinnerToevoeging"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="100dp"
+            android:ems="10"
+            android:hint="Toevoeging"
+            android:inputType="textCapCharacters"
+            app:layout_constraintBottom_toTopOf="@+id/btnSaveUser"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.298"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDatum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="10"
+            android:hint="Datum ontvangen"
+            android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/etSender"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.298"
+            app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_sender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true">
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etDatum"
+        android:id="@+id/etSender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="Verstuurder"
+        android:inputType="textCapSentences"
+        app:layout_constraintBottom_toTopOf="@+id/etComment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.298"
+        app:layout_constraintStart_toStartOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Datum"
-        android:inputType="date"
-        app:layout_constraintBottom_toTopOf="@+id/etPassword"
+        android:hint="Ophaalmogelijkheid"
+        android:inputType="textCapSentences"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.298"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/etHuisnummer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.298"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etHuisnummer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:ems="10"
-        android:hint="Huisnummer"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/etToevoeging"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.298"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/etToevoeging"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="336dp"
-        android:ems="10"
-        android:hint="Toevoeging"
-        android:inputType="textCapCharacters"
-        app:layout_constraintBottom_toTopOf="@+id/btnSaveUser"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.298"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteY="275dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnSaveUser"
-        android:layout_width="405dp"
+        android:id="@+id/btnSaveParcel"
+        android:layout_width="match_parent"
         android:layout_height="65dp"
         android:layout_marginStart="3dp"
         android:layout_marginEnd="3dp"
@@ -74,4 +136,4 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

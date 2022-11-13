@@ -14,6 +14,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.newparcel.NewParcelActivity"
+            android:label="@string/title_activity_new_parcel"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pakketjescentrale.MainActivity" />
+        </activity>
+        <activity
             android:name=".ui.newuser.NewUserActivity"
             android:label="@string/title_activity_new_user"
             android:parentActivityName=".MainActivity"
