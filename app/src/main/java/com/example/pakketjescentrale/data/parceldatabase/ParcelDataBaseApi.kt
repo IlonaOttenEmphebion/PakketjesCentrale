@@ -8,12 +8,18 @@ class ParcelDataBaseApi {
     companion object {
         // The base url off the api.
         private const val baseUrl = "https://parcels.yannickl88.nl/"
-        lateinit var token:String
+        private lateinit var token:String
+
+        fun setToken(token: String) {
+            println("WUBWUB $token")
+            this.token = token
+        }
 
         /**
          * @return [ParcelDataBaseApiService] The service class off the retrofit client.
          */
         fun createApi(): ParcelDataBaseApiService {
+            println("HENK!" + this.toString())
 
             // Create an OkHttpClient to be able to make a log of the network traffic
             val okHttpClient = OkHttpClient.Builder()

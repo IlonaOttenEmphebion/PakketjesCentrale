@@ -31,10 +31,9 @@ class HomeViewModel : ViewModel() {
                 response: Response<AuthenticationResponse>
             ) {
                 if (response.isSuccessful) {
-                    println("YAY")
+                    println("Response is successful")
                     authenticationResponse = response.body()!!
-                    ParcelDataBaseApi.token =
-                        authenticationResponse.accessToken
+                    ParcelDataBaseApi.setToken(authenticationResponse.accessToken)
                     authenticationInfo = authenticationResponse
 
                 } else {

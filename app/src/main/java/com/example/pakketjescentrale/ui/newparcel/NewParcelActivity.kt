@@ -7,10 +7,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.pakketjescentrale.MainActivity
 import com.example.pakketjescentrale.R
+import com.example.pakketjescentrale.data.parceldatabase.ParcelDataBaseApi
+import com.example.pakketjescentrale.model.AuthenticationResponse
 import com.example.pakketjescentrale.model.NewParcelRequest
 import kotlinx.android.synthetic.main.activity_new_parcel.*
 import kotlinx.android.synthetic.main.content_new_parcel.*
+import kotlinx.android.synthetic.main.content_new_user.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class NewParcelActivity : AppCompatActivity() {
 
@@ -72,13 +79,9 @@ class NewParcelActivity : AppCompatActivity() {
     }
 
     private fun onSaveParcelClick(){
-        val newParcel = NewParcelRequest(
-            spinnerHuisnummerParcel.selectedItem.toString(),
-            spinnerToevoegingParcel.selectedItem.toString(),
-            1,
-            etSender.toString()
-        )
-        newParcelViewModel.saveNewParcel(newParcel)
+
+        newParcelViewModel.saveNewParcel(etSender.text.toString(), etComment.text.toString(),
+            etDatum.text.toString(), spinnerHuisnummerParcel.selectedItem.toString().toInt(), spinnerToevoegingParcel.selectedItem.toString())
     }
 
 }

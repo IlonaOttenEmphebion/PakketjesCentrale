@@ -8,6 +8,6 @@ import kotlinx.android.parcel.Parcelize
 data class NewParcelRequest (
     @SerializedName("sender") var sender: String,
     @SerializedName("comment") var comment: String,
-    @SerializedName("owner_id") var owner_id: Int,
+    @SerializedName("owner_id") var owner_id: Number,
     @SerializedName("date") var date: String
 ): Parcelable
